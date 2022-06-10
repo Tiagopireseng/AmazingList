@@ -28,6 +28,7 @@ export class DialogComponent implements OnInit {
     (ingredient: Ingredient) => ingredient.name
   );
   actionBtn: string = 'Save';
+  genres: string[] = ['Fantasy', 'Sci-Fi', 'Thriller', 'Drama', 'Comedy'];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,9 +39,10 @@ export class DialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      ingredients: [[], Validators.required],
-      imageUrl: [''],
+      title: ['', Validators.required],
+      description: ['', Validators.required],
+      genre: ['', Validators.required],
+      year: ['', Validators.required],
     });
     if (this.data.Pizza) {
       this.actionBtn = 'Update';
@@ -67,7 +69,7 @@ export class DialogComponent implements OnInit {
         this.productForm.value.imageUrl =
           'https://bhdicas.uai.com.br/wp-content/uploads/sites/23/2017/03/pizza-site-or.jpg';
       }
-      this.api.postPizza(this.productForm.value).subscribe({
+      this.api.postMovieSeries(this.productForm.value).subscribe({
         next: (res) => {
           console.log(res);
           alert('Product added successfully');

@@ -2,16 +2,20 @@
 <div mat-dialog-content>
   <form [formGroup]="productForm">
     <mat-form-field appearance="fill">
-      <mat-label>Pizza name</mat-label>
-      <input formControlName="name" matInput placeholder="Name" />
+      <mat-label>Title</mat-label>
+      <input formControlName="title" matInput placeholder="Title" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Published Year</mat-label>
+      <input formControlName="year" matInput placeholder="Published Year" />
     </mat-form-field>
     <br />
     <br />
     <label style="margin-top: 10px">Componentes da pizza</label>
     <mat-form-field appearance="fill">
-      <mat-label>Imagem</mat-label>
+      <mat-label>Description</mat-label>
       <textarea
-        formControlName="imageUrl"
+        formControlName="description"
         matInput
         placeholder="Favor colar URL da imagem"
         rows="4"
@@ -20,13 +24,11 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Ingredients</mat-label>
-      <mat-select formControlName="ingredients" multiple>
-        <mat-option
-          *ngFor="let ingredient of ingredientsNames"
-          [value]="ingredient"
-          >{{ ingredient }}</mat-option
-        >
+      <mat-label>Genre</mat-label>
+      <mat-select formControlName="genre">
+        <mat-option *ngFor="let genre of genres" [value]="genre">{{
+          genre
+        }}</mat-option>
       </mat-select>
     </mat-form-field>
 

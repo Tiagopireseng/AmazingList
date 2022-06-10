@@ -48,6 +48,7 @@ export class PizzadisplayComponent implements OnInit {
     console.log(ingredientsList[0].name);
     dialogRef.afterClosed().subscribe((result: Pizza) => {
       this.getAllPizzas();
+      this.getAllMovieSeries();
       // if (result) {
       //   this.pizzaList.push(result);
       //   console.log('Result!');

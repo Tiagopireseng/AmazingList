@@ -32,16 +32,17 @@
 <div class="addButton">
   <button
     mat-raised-button
-    color="accent"
+    color="warn"
     (click)="addIngredient()"
     style="margin-right: 10px"
   >
-    Add Ingredient
+    Watchlist
   </button>
-  <button mat-raised-button color="warn" (click)="openDialog(ingredientsList)">
-    Add Pizza
-  </button>
-  <button mat-raised-button color="primary" (click)="logMovieSeries()">
-    Add Pizza
+  <button
+    mat-raised-button
+    color="secondary"
+    (click)="openDialog(ingredientsList)"
+  >
+    Add Movie/Serie
   </button>
 </div>

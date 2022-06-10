@@ -27,6 +27,9 @@ export class ApiService {
   postPizza(data: Pizza[]) {
     return this.http.post<Pizza[]>(this.pizzaUrl, data);
   }
+  postMovieSeries(data: MovieSeries) {
+    return this.http.post<MovieSeries>(this.movieseriesUrl, data);
+  }
   postIngedient(data: Ingredient) {
     return this.http.post<Ingredient>(this.ingredientsUrl, data);
   }
