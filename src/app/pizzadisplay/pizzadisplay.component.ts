@@ -12,6 +12,7 @@ import {
   FormControl,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MovieSeries } from './models/movieseries.model';
 
 @Component({
   selector: 'app-pizzadisplay',
@@ -22,6 +23,7 @@ export class PizzadisplayComponent implements OnInit {
   title = 'AngularMatCrud';
   pizzaList: Pizza[] = [];
   ingredientsList: Ingredient[] = [];
+  movieSeriesList: MovieSeries[] = [];
 
   constructor(
     public dialog: MatDialog,
@@ -73,11 +75,15 @@ export class PizzadisplayComponent implements OnInit {
     this.api.getMovieSeries().subscribe({
       next: (res) => {
         console.log(res);
+        this.movieSeriesList = res;
       },
       error: (err) => {
         console.log(err);
       },
     });
+  }
+  logMovieSeries() {
+    console.log(this.movieSeriesList);
   }
 
   getAllIngredients() {
