@@ -32,6 +32,7 @@ export class PizzadisplayComponent implements OnInit {
   ngOnInit() {
     this.getAllPizzas();
     this.getAllIngredients();
+    this.getAllMovieSeries();
   }
 
   openDialog(ingredientsList: Ingredient[]): void {
@@ -62,6 +63,16 @@ export class PizzadisplayComponent implements OnInit {
       next: (res) => {
         console.log(res);
         this.pizzaList = res;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+  getAllMovieSeries() {
+    this.api.getMovieSeries().subscribe({
+      next: (res) => {
+        console.log(res);
       },
       error: (err) => {
         console.log(err);

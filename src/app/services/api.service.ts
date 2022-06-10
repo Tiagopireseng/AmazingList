@@ -9,8 +9,12 @@ import { Pizza } from '../pizzadisplay/pizzacard/pizza';
 export class ApiService {
   pizzaUrl = 'http://localhost:3000/pizza';
   ingredientsUrl = 'http://localhost:3000/ingredients';
+  movieseriesUrl = 'http://127.0.0.1:8000/api/movie_series/';
 
   constructor(private http: HttpClient) {}
+  getMovieSeries() {
+    return this.http.get(this.movieseriesUrl);
+  }
 
   getPizzas() {
     return this.http.get<Pizza[]>(this.pizzaUrl);
