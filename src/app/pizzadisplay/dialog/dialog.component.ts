@@ -12,6 +12,7 @@ import { Pizza } from '../pizzacard/pizza';
 import { DialogData } from './DialogData';
 
 import { MatSelectModule } from '@angular/material/select';
+import { MovieSeries } from '../models/movieseries.model';
 
 @Component({
   selector: 'app-dialog',
@@ -21,12 +22,10 @@ import { MatSelectModule } from '@angular/material/select';
 export class DialogComponent implements OnInit {
   @Input() ingredientsList = this.data.ingredientsList;
   @Input() Pizza: Pizza = this.data.Pizza;
+  @Input() MovieSeries: MovieSeries = this.data.MovieSeries;
 
   productForm!: FormGroup;
   ingredientsForm = new FormControl();
-  ingredientsNames: string[] = this.ingredientsList.map(
-    (ingredient: Ingredient) => ingredient.name
-  );
   actionBtn: string = 'Save';
   genres: string[] = ['Fantasy', 'Sci-Fi', 'Thriller', 'Drama', 'Comedy'];
 
@@ -44,19 +43,20 @@ export class DialogComponent implements OnInit {
       genre: ['', Validators.required],
       year: ['', Validators.required],
     });
-    if (this.data.Pizza) {
+    if (this.data.MovieSeries) {
       this.actionBtn = 'Update';
       this.productForm.patchValue({
-        name: this.data.Pizza.name,
-        ingredients: this.data.Pizza.ingredients,
-        imageUrl: this.data.Pizza.imageUrl,
+        title: this.data.MovieSeries.title,
+        description: this.data.MovieSeries.description,
+        genre: this.data.MovieSeries.genre,
+        year: this.data.MovieSeries.year,
       });
     }
   }
 
   actionFunction() {
     console.log(this.productForm.value);
-    if (!this.data.Pizza) {
+    if (!this.data.MovieSeries) {
       this.addProduct();
     } else {
       this.updateProduct();
@@ -89,18 +89,20 @@ export class DialogComponent implements OnInit {
         this.productForm.value.imageUrl =
           'https://bhdicas.uai.com.br/wp-content/uploads/sites/23/2017/03/pizza-site-or.jpg';
       }
-      this.api.putPizza(this.data.Pizza.id, this.productForm.value).subscribe({
-        next: (res) => {
-          console.log(res);
-          alert('Product updated successfully');
-          this.productForm.reset();
-          this.dialogRef.close();
-        },
-        error: (err) => {
-          alert('Error updating product');
-          console.log(err);
-        },
-      });
+      this.api
+        .putMovieseries(this.data.MovieSeries.id, this.productForm.value)
+        .subscribe({
+          next: (res) => {
+            console.log(res);
+            alert('Product updated successfully');
+            this.productForm.reset();
+            this.dialogRef.close();
+          },
+          error: (err) => {
+            alert('Error updating product');
+            console.log(err);
+          },
+        });
     }
   }
 }

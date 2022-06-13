@@ -19,6 +19,7 @@ import { ApiService } from '../services/api.service';
 
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialElevationDirective } from './hover-elevation.directive';
+import { MovieserieComponent } from './movieserie/movieserie.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MaterialElevationDirective } from './hover-elevation.directive';
     PizzacardComponent,
     DialogComponent,
     MaterialElevationDirective,
+    MovieserieComponent,
   ],
   imports: [
     CommonModule,

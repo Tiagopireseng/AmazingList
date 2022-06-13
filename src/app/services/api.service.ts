@@ -42,4 +42,8 @@ export class ApiService {
   putPizza(id: number, data: Pizza) {
     return this.http.put(`${this.pizzaUrl}/${id}`, data);
   }
+
+  putMovieseries(id: number, data: MovieSeries) {
+    return this.http.put(`${this.movieseriesUrl}/${id}`, data);
+  }
 }

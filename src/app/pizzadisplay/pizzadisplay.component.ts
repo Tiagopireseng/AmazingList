@@ -118,6 +118,7 @@ export class PizzadisplayComponent implements OnInit {
   updateEvent(event: string) {
     if (event === 'trigger') {
       this.getAllPizzas();
+      this.getAllMovieSeries();
     }
   }
 }
