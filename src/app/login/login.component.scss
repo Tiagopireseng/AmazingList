@@ -6,7 +6,7 @@ html {
 
 .box {
   display: grid;
-  background: url("pizzaoven.jpg") no-repeat center center fixed;
+  background: url("jokerlogin.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -25,7 +25,7 @@ html {
   margin-top: 12%;
   margin-bottom: 50%;
   backdrop-filter: blur(2px);
-  background-color: rgba(245, 245, 245, 0.2);
+  background-color: rgba(0, 0, 0, 0.5);
   opacity: 1;
 }
 

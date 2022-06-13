@@ -159,14 +159,6 @@
   ],
   "pizza": [
     {
-      "name": "Calabresa",
-      "ingredients": [
-        "Tomate"
-      ],
-      "imageUrl": "https://t2.rg.ltmcdn.com/pt/posts/9/8/3/pizza_calabresa_e_mussarela_4389_600.jpg",
-      "id": 4
-    },
-    {
       "name": "Bacon",
       "ingredients": [
         "Bacon"
@@ -212,37 +204,6 @@
       ],
       "imageUrl": "https://i.ytimg.com/vi/tPs8XjXZCDc/maxresdefault.jpg",
       "id": 16
-    },
-    {
-      "name": "Bosta",
-      "ingredients": [
-        "Orégano",
-        "Calabresa",
-        "Cebola"
-      ],
-      "imageUrl": "https://pbs.twimg.com/media/C3EbhABXEAID7hq.jpg",
-      "id": 17
-    },
-    {
-      "name": "Piroca",
-      "ingredients": [
-        "Molho",
-        "Tomate",
-        "Orégano",
-        "Frango"
-      ],
-      "imageUrl": "https://pbs.twimg.com/media/Ec7mHBEWkAUQrwD.jpg",
-      "id": 18
-    },
-    {
-      "name": "Capiroto",
-      "ingredients": [
-        "Molho",
-        "Queijo Mussarela",
-        "Atum"
-      ],
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaEUJJzdST8CCmjGm2R7wSsYtU64RAvQ6KTXNZDd1MhxIWxiWlONb6XZvSIPeGzKMnG6E&usqp=CAU",
-      "id": 19
     }
   ]
 }

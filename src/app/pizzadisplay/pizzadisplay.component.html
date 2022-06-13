@@ -3,21 +3,19 @@
   class="hero__video-inner"
   style="width: 100%; height: 935px; margin-top: 5px"
 >
-  <iframe
-    src="//player.vimeo.com/video/165492949?title=0&amp;byline=0&amp;portrait=0&amp;color=3a6774&amp;autoplay=1&amp;loop=1&amp;background=1"
-    width="100%"
-    height="100%"
-    title="Vimeo Video"
-    frameborder="0"
-    data-ready="true"
-    data-audioeye-media=""
-    data-audioeye-vimeo=""
-    id="myVideo"
-  ></iframe>
+  <video
+    alt="Glow Northern Lights GIF by xponentialdesign"
+    src="https://media1.giphy.com/media/RIBYE7y1t96SHPKjoA/giphy.mp4?cid=790b76113949ccc2ae727c2f73d598e45c1f790e047779f6&amp;rid=giphy.mp4&amp;ct=g"
+    poster="https://media1.giphy.com/media/RIBYE7y1t96SHPKjoA/giphy_s.gif?cid=790b76113949ccc2ae727c2f73d598e45c1f790e047779f6&amp;rid=giphy_s.gif&amp;ct=g"
+    autoplay=""
+    loop=""
+    playsinline=""
+    style="width: 100%; height: 100%"
+  ></video>
 </div>
 <div class="position">
   <div class="flexbox-container">
-    <app-pizzacard
+    <!-- <app-pizzacard
       *ngFor="let pizzaObj of pizzaList; let i = index"
       [pizza]="pizzaObj"
       (deletePizzaID)="deletePizza($event)"
@@ -26,6 +24,15 @@
       appMaterialElevation
     >
       ></app-pizzacard
+    > -->
+    <app-movieserie
+      *ngFor="let msObj of movieSeriesList; let i = index"
+      [movieseries]="msObj"
+      (deleteMSID)="deletePizza($event)"
+      (UpdateMSID)="updateEvent($event)"
+      appMaterialElevation
+    >
+      ></app-movieserie
     >
   </div>
 </div>
