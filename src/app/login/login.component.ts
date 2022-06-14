@@ -26,24 +26,29 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      name: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', Validators.required],
-    });
-    this.api.getUsers().subscribe((data: User[]) => {
-      this.userList = data;
-      console.log(this.userList);
     });
   }
 
   login() {
     let loginUser = this.loginForm.value;
     console.log(loginUser);
-    this.userList.map((user) => {
-      console.log(user);
-      if (user.name === loginUser.name) {
-        console.log('Success!');
+    // this.userList.map((user) => {
+    //   console.log(user);
+    //   if (user.username === loginUser.name) {
+    //     console.log('Success!');
+    //     this.router.navigate(['/display']);
+    //   }
+    // });
+    this.api.authenticateUser(loginUser).subscribe({
+      next: (res) => {
+        console.log(res);
         this.router.navigate(['/display']);
-      }
+      },
+      error: (err) => {
+        console.log(err);
+      },
     });
   }
 
