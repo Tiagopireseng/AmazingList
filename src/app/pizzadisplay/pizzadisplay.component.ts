@@ -99,14 +99,16 @@ export class PizzadisplayComponent implements OnInit {
     });
   }
 
-  deletePizza(id: number) {
-    this.api.deletePizza(id).subscribe({
+  deleteMovieSerie(id: number) {
+    this.api.deleteMovieSerie(id).subscribe({
       next: (res) => {
         console.log(res);
         alert('Product deleted successfully');
-        this.pizzaList = this.pizzaList.filter((res, index) => index !== id);
-        console.log(this.pizzaList);
-        this.getAllPizzas();
+        this.movieSeriesList = this.movieSeriesList.filter(
+          (res, index) => index !== id
+        );
+        console.log(this.movieSeriesList);
+        this.getAllMovieSeries();
       },
       error: (err) => {
         alert('Error deleting product');

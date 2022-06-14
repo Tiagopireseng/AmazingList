@@ -28,7 +28,7 @@
     <app-movieserie
       *ngFor="let msObj of movieSeriesList; let i = index"
       [movieseries]="msObj"
-      (deleteMSID)="deletePizza($event)"
+      (deleteMSID)="deleteMovieSerie($event)"
       (UpdateMSID)="updateEvent($event)"
       appMaterialElevation
     >

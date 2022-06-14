@@ -33,8 +33,8 @@ export class ApiService {
   postIngedient(data: Ingredient) {
     return this.http.post<Ingredient>(this.ingredientsUrl, data);
   }
-  deletePizza(id: number) {
-    return this.http.delete(`${this.pizzaUrl}/${id}`);
+  deleteMovieSerie(id: number) {
+    return this.http.delete(`${this.movieseriesUrl}${id}/`);
   }
   deleteIngredient(id: number) {
     return this.http.delete(`${this.ingredientsUrl}/${id}`);
@@ -44,6 +44,6 @@ export class ApiService {
   }
 
   putMovieseries(id: number, data: MovieSeries) {
-    return this.http.put(`${this.movieseriesUrl}/${id}`, data);
+    return this.http.put(`${this.movieseriesUrl}${id}/`, data);
   }
 }
