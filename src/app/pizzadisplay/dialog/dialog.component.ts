@@ -7,8 +7,6 @@ import {
 } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ApiService } from 'src/app/services/api.service';
-import { Ingredient } from '../pizzacard/ingredients';
-import { Pizza } from '../pizzacard/pizza';
 import { DialogData } from './DialogData';
 
 import { MatSelectModule } from '@angular/material/select';
@@ -20,8 +18,6 @@ import { MovieSeries } from '../models/movieseries.model';
   styleUrls: ['./dialog.component.scss'],
 })
 export class DialogComponent implements OnInit {
-  @Input() ingredientsList = this.data.ingredientsList;
-  @Input() Pizza: Pizza = this.data.Pizza;
   @Input() MovieSeries: MovieSeries = this.data.MovieSeries;
 
   productForm!: FormGroup;

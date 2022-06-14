@@ -15,16 +15,6 @@
 </div>
 <div class="position">
   <div class="flexbox-container">
-    <!-- <app-pizzacard
-      *ngFor="let pizzaObj of pizzaList; let i = index"
-      [pizza]="pizzaObj"
-      (deletePizzaID)="deletePizza($event)"
-      (Update)="updateEvent($event)"
-      [ingredientsList]="ingredientsList"
-      appMaterialElevation
-    >
-      ></app-pizzacard
-    > -->
     <app-movieserie
       *ngFor="let msObj of movieSeriesList; let i = index"
       [movieseries]="msObj"
@@ -45,11 +35,7 @@
   >
     Watchlist
   </button>
-  <button
-    mat-raised-button
-    color="secondary"
-    (click)="openDialog(ingredientsList)"
-  >
+  <button mat-raised-button color="secondary" (click)="openDialog()">
     Add Movie/Serie
   </button>
 </div>

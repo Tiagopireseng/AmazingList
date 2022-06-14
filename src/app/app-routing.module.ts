@@ -14,8 +14,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./login/login.module').then((m) => m.LoginModule),
   },
-  { path: 'header', loadChildren: () => import('./header/header.module').then(m => m.HeaderModule) },
-  { path: 'ingredientslist', loadChildren: () => import('./ingredientslist/ingredientslist.module').then(m => m.IngredientslistModule) },
+  {
+    path: 'header',
+    loadChildren: () =>
+      import('./header/header.module').then((m) => m.HeaderModule),
+  },
 ];
 
 @NgModule({

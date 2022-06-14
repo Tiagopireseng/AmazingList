@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Ingredient } from './pizzacard/ingredients';
-import { Pizza } from './pizzacard/pizza';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ApiService } from '../services/api.service';
 import { DialogComponent } from './dialog/dialog.component';
@@ -21,8 +19,6 @@ import { MovieSeries } from './models/movieseries.model';
 })
 export class PizzadisplayComponent implements OnInit {
   title = 'AngularMatCrud';
-  pizzaList: Pizza[] = [];
-  ingredientsList: Ingredient[] = [];
   movieSeriesList: MovieSeries[] = [];
 
   constructor(
@@ -32,45 +28,25 @@ export class PizzadisplayComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getAllPizzas();
-    this.getAllIngredients();
     this.getAllMovieSeries();
   }
 
-  openDialog(ingredientsList: Ingredient[]): void {
+  openDialog(): void {
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '500px',
-      data: {
-        ingredientsList: ingredientsList,
-      },
+      data: {},
     });
-    console.log(ingredientsList);
-    console.log(ingredientsList[0].name);
-    dialogRef.afterClosed().subscribe((result: Pizza) => {
-      this.getAllPizzas();
+
+    dialogRef.afterClosed().subscribe((result) => {
       this.getAllMovieSeries();
-      // if (result) {
-      //   this.pizzaList.push(result);
-      //   console.log('Result!');
-      // }
-      // console.log(this.pizzaList);
+      if (result) {
+        console.log('Result!');
+      }
     });
   }
 
   addIngredient() {
     this.router.navigate(['/ingredientslist']);
-  }
-
-  getAllPizzas() {
-    this.api.getPizzas().subscribe({
-      next: (res) => {
-        console.log(res);
-        this.pizzaList = res;
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
   }
   getAllMovieSeries() {
     this.api.getMovieSeries().subscribe({
@@ -85,18 +61,6 @@ export class PizzadisplayComponent implements OnInit {
   }
   logMovieSeries() {
     console.log(this.movieSeriesList);
-  }
-
-  getAllIngredients() {
-    this.api.getIngedients().subscribe({
-      next: (res) => {
-        console.log(res);
-        this.ingredientsList = res;
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
   }
 
   deleteMovieSerie(id: number) {
@@ -119,7 +83,6 @@ export class PizzadisplayComponent implements OnInit {
 
   updateEvent(event: string) {
     if (event === 'trigger') {
-      this.getAllPizzas();
       this.getAllMovieSeries();
     }
   }

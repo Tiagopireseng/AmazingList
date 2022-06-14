@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MovieSeries } from '../pizzadisplay/models/movieseries.model';
-import { Ingredient } from '../pizzadisplay/pizzacard/ingredients';
-import { Pizza } from '../pizzadisplay/pizzacard/pizza';
 
 @Injectable({
   providedIn: 'any',
@@ -16,33 +14,12 @@ export class ApiService {
   getMovieSeries() {
     return this.http.get<MovieSeries[]>(this.movieseriesUrl);
   }
-
-  getPizzas() {
-    return this.http.get<Pizza[]>(this.pizzaUrl);
-  }
-  getIngedients() {
-    return this.http.get<Ingredient[]>(this.ingredientsUrl);
-  }
-
-  postPizza(data: Pizza[]) {
-    return this.http.post<Pizza[]>(this.pizzaUrl, data);
-  }
   postMovieSeries(data: MovieSeries) {
     return this.http.post<MovieSeries>(this.movieseriesUrl, data);
-  }
-  postIngedient(data: Ingredient) {
-    return this.http.post<Ingredient>(this.ingredientsUrl, data);
   }
   deleteMovieSerie(id: number) {
     return this.http.delete(`${this.movieseriesUrl}${id}/`);
   }
-  deleteIngredient(id: number) {
-    return this.http.delete(`${this.ingredientsUrl}/${id}`);
-  }
-  putPizza(id: number, data: Pizza) {
-    return this.http.put(`${this.pizzaUrl}/${id}`, data);
-  }
-
   putMovieseries(id: number, data: MovieSeries) {
     return this.http.put(`${this.movieseriesUrl}${id}/`, data);
   }

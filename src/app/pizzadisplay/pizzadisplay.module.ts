@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { PizzadisplayRoutingModule } from './pizzadisplay-routing.module';
 import { PizzadisplayComponent } from './pizzadisplay.component';
 import { HeaderModule } from '../header/header.module';
-import { PizzacardComponent } from './pizzacard/pizzacard.component';
 import { DialogComponent } from './dialog/dialog.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -24,7 +23,6 @@ import { MovieserieComponent } from './movieserie/movieserie.component';
 @NgModule({
   declarations: [
     PizzadisplayComponent,
-    PizzacardComponent,
     DialogComponent,
     MaterialElevationDirective,
     MovieserieComponent,
