@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
       console.log(user);
       if (user.name === loginUser.name) {
         console.log('Success!');
-        this.router.navigate(['/pizzadisplay']);
+        this.router.navigate(['/display']);
       }
     });
   }

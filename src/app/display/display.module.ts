@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PizzadisplayRoutingModule } from './pizzadisplay-routing.module';
-import { PizzadisplayComponent } from './pizzadisplay.component';
+import { DisplayRoutingModule } from './display-routing.module';
+import { DisplayComponent } from './display.component';
 import { HeaderModule } from '../header/header.module';
 import { DialogComponent } from './dialog/dialog.component';
 
@@ -22,7 +22,7 @@ import { MovieserieComponent } from './movieserie/movieserie.component';
 
 @NgModule({
   declarations: [
-    PizzadisplayComponent,
+    DisplayComponent,
     DialogComponent,
     MaterialElevationDirective,
     MovieserieComponent,
@@ -30,7 +30,7 @@ import { MovieserieComponent } from './movieserie/movieserie.component';
   imports: [
     CommonModule,
     HttpClientModule,
-    PizzadisplayRoutingModule,
+    DisplayRoutingModule,
     HeaderModule,
     FormsModule,
     ReactiveFormsModule,

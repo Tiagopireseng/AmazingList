@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { MovieSeries } from '../pizzadisplay/models/movieseries.model';
+import { MovieSeries } from '../display/models/movieseries.model';
 
 @Injectable({
   providedIn: 'any',

@@ -3,11 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'pizzadisplay',
+    path: 'display',
     loadChildren: () =>
-      import('./pizzadisplay/pizzadisplay.module').then(
-        (m) => m.PizzadisplayModule
-      ),
+      import('./display/display.module').then((m) => m.PizzadisplayModule),
   },
   {
     path: '',

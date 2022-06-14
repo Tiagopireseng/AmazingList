@@ -13,11 +13,11 @@ import { Router } from '@angular/router';
 import { MovieSeries } from './models/movieseries.model';
 
 @Component({
-  selector: 'app-pizzadisplay',
-  templateUrl: './pizzadisplay.component.html',
-  styleUrls: ['./pizzadisplay.component.scss'],
+  selector: 'app-display',
+  templateUrl: './display.component.html',
+  styleUrls: ['./display.component.scss'],
 })
-export class PizzadisplayComponent implements OnInit {
+export class DisplayComponent implements OnInit {
   title = 'AngularMatCrud';
   movieSeriesList: MovieSeries[] = [];
 
@@ -45,8 +45,8 @@ export class PizzadisplayComponent implements OnInit {
     });
   }
 
-  addIngredient() {
-    this.router.navigate(['/ingredientslist']);
+  goToWatchlist() {
+    this.router.navigate(['/watchlist']);
   }
   getAllMovieSeries() {
     this.api.getMovieSeries().subscribe({
