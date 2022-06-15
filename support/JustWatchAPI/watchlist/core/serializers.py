@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from .models import MovieSeries
-from django.contrib.auth.models import User
+from .models import MovieSeries, Provider, User
+# from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.validators import UniqueValidator
@@ -10,7 +10,14 @@ from django.contrib.auth.password_validation import validate_password
 class MovieSerieSerializer(serializers.ModelSerializer):
     class Meta:
         model = MovieSeries
-        fields = ('id', 'title', 'year', 'genre', 'description')
+        fields = ('id', 'title', 'year', 'genre',
+                  'description', 'poster', 'providers')
+
+
+class ProviderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Provider
+        fields = ('id', 'name', 'url', 'type')
 
 
 # Serializer to Get User Details using Django Token Authentication

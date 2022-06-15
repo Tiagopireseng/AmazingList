@@ -2,9 +2,9 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.views import APIView
 
-from .serializers import MovieSerieSerializer, UserSerializer, RegisterSerializer
+from .serializers import MovieSerieSerializer, ProviderSerializer, UserSerializer, RegisterSerializer
 
-from .models import MovieSeries
+from .models import MovieSeries, Provider
 from django.contrib.auth.models import User
 
 
@@ -19,6 +19,11 @@ from rest_framework import generics
 class MovieSerieView(viewsets.ModelViewSet):
     serializer_class = MovieSerieSerializer
     queryset = MovieSeries.objects.all()
+
+
+class ProviderView(viewsets.ModelViewSet):
+    serializer_class = ProviderSerializer
+    queryset = Provider.objects.all()
 
 
 # Class based view to Get User Details using Token Authentication
