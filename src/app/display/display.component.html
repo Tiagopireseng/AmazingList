@@ -1,8 +1,5 @@
 <app-header></app-header>
-<div
-  class="hero__video-inner"
-  style="width: 100%; height: 935px; margin-top: 5px"
->
+<div class="hero__video-inner">
   <video
     alt="Glow Northern Lights GIF by xponentialdesign"
     src="https://media1.giphy.com/media/RIBYE7y1t96SHPKjoA/giphy.mp4?cid=790b76113949ccc2ae727c2f73d598e45c1f790e047779f6&amp;rid=giphy.mp4&amp;ct=g"
@@ -10,22 +7,24 @@
     autoplay=""
     loop=""
     playsinline=""
-    style="width: 100%; height: 100%"
-  ></video>
-</div>
-<div class="position">
-  <div class="flexbox-container">
-    <app-movieserie
-      *ngFor="let msObj of movieSeriesList; let i = index"
-      [movieseries]="msObj"
-      (deleteMSID)="deleteMovieSerie($event)"
-      (UpdateMSID)="updateEvent($event)"
-      appMaterialElevation
+    class="cover"
+  >
     >
-      ></app-movieserie
-    >
-  </div>
+  </video>
 </div>
+<div class="flexbox-container">
+  <app-movieserie
+    *ngFor="let msObj of movieSeriesList; let i = index"
+    [movieseries]="msObj"
+    (deleteMSID)="deleteMovieSerie($event)"
+    (UpdateMSID)="updateEvent($event)"
+    appMaterialElevation
+  >
+    ></app-movieserie
+  >
+</div>
+
+<!-- Toolbar fixed position buttons -->
 <div class="addButton">
   <button
     mat-raised-button

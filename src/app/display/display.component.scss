@@ -1,14 +1,14 @@
-#myVideo {
+.cover {
+  width: 100%;
   height: 100%;
-  overflow: hidden;
+  position: fixed;
+  flex: 1 1 auto;
+  object-fit: cover;
 }
 
-.position {
-  position: absolute;
-  top: 10%;
-}
-
+// Cards flexbox
 .flexbox-container {
+  top: 10%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -16,6 +16,7 @@
   align-content: space-around;
 }
 
+// Fix buttons over the Header
 .addButton {
   position: fixed;
   z-index: 10000;
