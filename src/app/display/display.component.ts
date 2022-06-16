@@ -11,6 +11,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MovieSeries } from './models/movieseries.model';
+import { DatashareService } from '../services/datashare.service';
 
 @Component({
   selector: 'app-display',
@@ -20,15 +21,26 @@ import { MovieSeries } from './models/movieseries.model';
 export class DisplayComponent implements OnInit {
   title = 'AngularMatCrud';
   movieSeriesList: MovieSeries[] = [];
+  activeUserID?: number;
+  watchlist?: number[];
 
   constructor(
     public dialog: MatDialog,
     private api: ApiService,
-    private router: Router
+    private router: Router,
+    private datashare: DatashareService
   ) {}
 
   ngOnInit() {
     this.getAllMovieSeries();
+    this.datashare.currentUserID.subscribe((id) => (this.activeUserID = id));
+    console.log('Active User ID: ', this.activeUserID);
+    if (this.activeUserID === undefined) {
+      console.log('No user logged in, redirecting to login');
+      this.router.navigate(['']);
+    } else {
+      this.getUserWatchlist(this.activeUserID);
+    }
   }
 
   openDialog(): void {
@@ -61,6 +73,18 @@ export class DisplayComponent implements OnInit {
   }
   logMovieSeries() {
     console.log(this.movieSeriesList);
+  }
+
+  getUserWatchlist(userID: number) {
+    this.api.getWatchlist(userID).subscribe({
+      next: (res) => {
+        console.log('Watchlist! ', res);
+        this.watchlist = res;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 
   deleteMovieSerie(id: number) {

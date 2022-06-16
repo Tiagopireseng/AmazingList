@@ -6,9 +6,9 @@ import { MovieSeries } from '../display/models/movieseries.model';
   providedIn: 'any',
 })
 export class ApiService {
-  pizzaUrl = 'http://localhost:3000/pizza';
-  ingredientsUrl = 'http://localhost:3000/ingredients';
-  movieseriesUrl = 'http://127.0.0.1:8000/api/movie_series/';
+  apiURL = 'http://localhost:8000/api/';
+  movieseriesUrl = this.apiURL + 'movie_series/';
+  watchlistUrl = this.apiURL + 'watchlist/';
 
   constructor(private http: HttpClient) {}
   getMovieSeries() {
@@ -22,5 +22,10 @@ export class ApiService {
   }
   putMovieseries(id: number, data: MovieSeries) {
     return this.http.put(`${this.movieseriesUrl}${id}/`, data);
+  }
+  getWatchlist(userID: number) {
+    return this.http.get<number[]>(`${this.watchlistUrl}`, {
+      params: { user: userID },
+    });
   }
 }
