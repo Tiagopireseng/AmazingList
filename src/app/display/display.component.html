@@ -1,16 +1,9 @@
 <app-header></app-header>
 <div class="hero__video-inner">
-  <video
-    alt="Glow Northern Lights GIF by xponentialdesign"
-    src="https://media1.giphy.com/media/RIBYE7y1t96SHPKjoA/giphy.mp4?cid=790b76113949ccc2ae727c2f73d598e45c1f790e047779f6&amp;rid=giphy.mp4&amp;ct=g"
-    poster="https://media1.giphy.com/media/RIBYE7y1t96SHPKjoA/giphy_s.gif?cid=790b76113949ccc2ae727c2f73d598e45c1f790e047779f6&amp;rid=giphy_s.gif&amp;ct=g"
-    autoplay=""
-    loop=""
-    playsinline=""
+  <img
+    src="https://r4.wallpaperflare.com/wallpaper/721/144/958/movies-2001-a-space-odyssey-hal-9000-wallpaper-59b0289da1aa5dab06e7d85ff091967d.jpg"
     class="cover"
-  >
-    >
-  </video>
+  />
 </div>
 <div class="flexbox-container">
   <app-movieserie
@@ -18,6 +11,7 @@
     [movieseries]="msObj"
     (deleteMSID)="deleteMovieSerie($event)"
     (UpdateMSID)="updateEvent($event)"
+    (addMSIDtoWatchlist)="addToWatchlist($event)"
     appMaterialElevation
   >
     ></app-movieserie

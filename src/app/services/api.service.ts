@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MovieSeries } from '../display/models/movieseries.model';
+import { Watchlist } from '../display/models/watchlist.model';
 
 @Injectable({
   providedIn: 'any',
@@ -24,8 +25,17 @@ export class ApiService {
     return this.http.put(`${this.movieseriesUrl}${id}/`, data);
   }
   getWatchlist(userID: number) {
-    return this.http.get<number[]>(`${this.watchlistUrl}`, {
+    return this.http.get<Watchlist[]>(`${this.watchlistUrl}`, {
       params: { user: userID },
     });
+  }
+  createWatchlist(userID: number, movieID: number) {
+    return this.http.post(`${this.watchlistUrl}`, {
+      user: userID,
+      movie_series: [movieID],
+    });
+  }
+  putToWatchlist(watchlistID: number, data: Watchlist) {
+    return this.http.put(`${this.watchlistUrl}${watchlistID}/`, data);
   }
 }

@@ -14,8 +14,7 @@ export class MovieserieComponent implements OnInit {
 
   @Output() deleteMSID = new EventEmitter<number>();
   @Output() UpdateMSID = new EventEmitter<string>();
-
-  watchlistMS: MovieSeries[] = [];
+  @Output() addMSIDtoWatchlist = new EventEmitter<number>();
 
   imageUrl: string = '';
 
@@ -26,8 +25,12 @@ export class MovieserieComponent implements OnInit {
     // this.imageUrl = this.movieseries['imageUrl'];
   }
 
-  addToWatchlist() {
-    this.watchlistMS.push(this.movieseries);
+  addMSIDtoWatchlistEvent(value: number) {
+    this.addMSIDtoWatchlist.emit(value);
+  }
+
+  addWatchlist() {
+    this.addMSIDtoWatchlistEvent(this.movieseries.id);
   }
 
   deleteMSIDEvent(value: number) {

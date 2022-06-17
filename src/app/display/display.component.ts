@@ -12,6 +12,7 @@ import {
 import { Router } from '@angular/router';
 import { MovieSeries } from './models/movieseries.model';
 import { DatashareService } from '../services/datashare.service';
+import { Watchlist } from './models/watchlist.model';
 
 @Component({
   selector: 'app-display',
@@ -22,7 +23,7 @@ export class DisplayComponent implements OnInit {
   title = 'AngularMatCrud';
   movieSeriesList: MovieSeries[] = [];
   activeUserID?: number;
-  watchlist?: number[];
+  watchlist?: Watchlist;
 
   constructor(
     public dialog: MatDialog,
@@ -79,7 +80,7 @@ export class DisplayComponent implements OnInit {
     this.api.getWatchlist(userID).subscribe({
       next: (res) => {
         console.log('Watchlist! ', res);
-        this.watchlist = res;
+        [this.watchlist] = res;
       },
       error: (err) => {
         console.log(err);
@@ -108,6 +109,31 @@ export class DisplayComponent implements OnInit {
   updateEvent(event: string) {
     if (event === 'trigger') {
       this.getAllMovieSeries();
+    }
+  }
+
+  addToWatchlist(movieID: number) {
+    if (this.watchlist === undefined) {
+      console.log('Creating watchlist');
+      this.api.createWatchlist(this.activeUserID!, movieID).subscribe({
+        next: (res) => {
+          console.log(res);
+          this.getUserWatchlist(this.activeUserID!);
+        },
+      });
+    }
+    if (this.watchlist!.movie_series.includes(movieID)) {
+      alert('Movie already in watchlist');
+    } else {
+      console.log('Adding to watchlist');
+      this.watchlist!.movie_series.push(movieID);
+      let data = this.watchlist!;
+      this.api.putToWatchlist(this.watchlist!.id, data).subscribe({
+        next: (res) => {
+          console.log(res);
+          this.getUserWatchlist(this.activeUserID!);
+        },
+      });
     }
   }
 }
