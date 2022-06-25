@@ -1,4 +1,10 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { Observable } from 'rxjs';
 import { DetailWatchlist } from '../display/models/detailwatchlist.model';
 import { MovieSeries } from '../display/models/movieseries.model';
@@ -46,5 +52,15 @@ export class WatchlistComponent implements OnInit {
 
   printFunction() {
     console.log(this.watchlist);
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  handleScroll() {
+    const windowScroll = window.pageYOffset;
+    if (windowScroll >= this.header.nativeElement.offsetHeight) {
+      this.sticky = true;
+    } else {
+      this.sticky = false;
+    }
   }
 }
