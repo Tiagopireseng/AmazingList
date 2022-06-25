@@ -21,6 +21,16 @@ class ProviderSerializer(serializers.ModelSerializer):
 
 
 class WatchlistSerializer(serializers.ModelSerializer):
+    # movie_series = MovieSerieSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Watchlist
+        fields = ('id', 'user', 'movie_series')
+
+
+class GetWatchlistSerializer(serializers.ModelSerializer):
+    movie_series = MovieSerieSerializer(many=True, read_only=True)
+
     class Meta:
         model = Watchlist
         fields = ('id', 'user', 'movie_series')

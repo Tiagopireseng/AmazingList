@@ -12,6 +12,8 @@ import { DialogData } from './DialogData';
 import { MatSelectModule } from '@angular/material/select';
 import { MovieSeries } from '../models/movieseries.model';
 
+import { Provider } from '../models/provider.model';
+
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
@@ -19,11 +21,16 @@ import { MovieSeries } from '../models/movieseries.model';
 })
 export class DialogComponent implements OnInit {
   @Input() MovieSeries: MovieSeries = this.data.MovieSeries;
+  @Input() providersList: Provider[] = this.data.providersList;
 
   productForm!: FormGroup;
-  ingredientsForm = new FormControl();
+  providersForm = new FormControl();
   actionBtn: string = 'Save';
   genres: string[] = ['Fantasy', 'Sci-Fi', 'Thriller', 'Drama', 'Comedy'];
+
+  providersName: string[] = this.providersList.map((provider: Provider) => {
+    return provider.name;
+  });
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,6 +45,8 @@ export class DialogComponent implements OnInit {
       description: ['', Validators.required],
       genre: ['', Validators.required],
       year: ['', Validators.required],
+      poster: [''],
+      providers: [''], //Needs to be parsed to the Provider ID to be putted or posted
     });
     if (this.data.MovieSeries) {
       this.actionBtn = 'Update';
@@ -46,6 +55,8 @@ export class DialogComponent implements OnInit {
         description: this.data.MovieSeries.description,
         genre: this.data.MovieSeries.genre,
         year: this.data.MovieSeries.year,
+        poster: this.data.MovieSeries.poster,
+        providers: this.data.MovieSeries.providers,
       });
     }
   }

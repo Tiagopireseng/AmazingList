@@ -1,0 +1,7 @@
+<h2 style="color: red">Title</h2>
+<div *ngIf="watchlist.length > 0">
+  <img [src]="watchlist[0].poster" alt="logo" />
+</div>
+<div *ngFor="let movie of watchlistObs.movie_series">
+  <img [src]="movie.poster" />
+</div>

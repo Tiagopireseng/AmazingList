@@ -44,4 +44,4 @@ import { MovieserieComponent } from './movieserie/movieserie.component';
   ],
   providers: [ApiService],
 })
-export class PizzadisplayModule {}
+export class DisplayModule {}

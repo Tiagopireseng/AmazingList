@@ -1,0 +1,163 @@
+<div class="container">
+  <div class="header">
+    <h1>Watchlist</h1>
+    <div
+      class="header-banner"
+      [ngStyle]="{
+        'background-image':
+          'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3)), url(https://r4.wallpaperflare.com/wallpaper/221/116/854/joaquin-phoenix-joker-batman-fire-car-hd-wallpaper-f7af82e47f754f1a9f12f411f1e1c705.jpg)'
+      }"
+    >
+      <h3>What you're gonna watch next?</h3>
+      <div class="header-button">
+        <button class="play-button" (click)="printFunction()">
+          <mat-icon>play_arrow</mat-icon>
+          <span>Play</span>
+        </button>
+        <button class="more-button">
+          <mat-icon>info</mat-icon>
+          <span>More Info</span>
+        </button>
+      </div>
+    </div>
+    <!-- Header banner ends here -->
+
+    <!-- Header main starts here -->
+    <div
+      class="header-main"
+      id="stickyHeader"
+      [class.sticky]="sticky"
+      #stickyHeader
+    >
+      <div class="header-left">
+        <a routerLink="display">
+          <img src="../../../assets/images/movies.png" alt="logo" />
+        </a>
+        <ul>
+          <li class="active">
+            <a routerLink="display">Home</a>
+          </li>
+          <li>
+            <a routerLink="display">TV Shows</a>
+          </li>
+          <li>
+            <a routerLink="display">Movies</a>
+          </li>
+          <li>
+            <a routerLink="display">My List</a>
+          </li>
+        </ul>
+      </div>
+      <div class="header-right">
+        <ul>
+          <li>
+            <a routerLink="display">
+              <mat-icon>search</mat-icon>
+            </a>
+          </li>
+          <li>
+            <a routerLink="display">
+              <mat-icon>account_circle</mat-icon>
+            </a>
+          </li>
+          <li>
+            <a routerLink="display">
+              <mat-icon>card_giftcard</mat-icon>
+            </a>
+          </li>
+          <li>
+            <a routerLink="display">
+              <mat-icon>notifications</mat-icon>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Header main ends here -->
+  </div>
+  <div class="body" style="margin-top: 30rem">
+    <ng-container *ngIf="newObservable | async as watchlist">
+      <div class="movie">
+        <div class="movie-image">
+          <div class="thumbnail" style="margin: 50px 25px">
+            <h2>Main list</h2>
+            <ngx-slick-carousel [config]="sliderConfig" class="carousel">
+              <div
+                class="slick-item"
+                *ngFor="let movie of watchlist.movie_series"
+                ngxSlickItem
+              >
+                <img
+                  [src]="movie.poster"
+                  [alt]="movie.title"
+                  style="width: 200px"
+                />
+              </div>
+            </ngx-slick-carousel>
+            <h2>Available on selected provider</h2>
+
+            <ngx-slick-carousel [config]="sliderConfig" class="carousel">
+              <div
+                class="slick-item"
+                *ngFor="let movie of watchlist.movie_series"
+                ngxSlickItem
+              >
+                <img
+                  [src]="movie.poster"
+                  [alt]="movie.title"
+                  style="width: 200px"
+                />
+              </div>
+            </ngx-slick-carousel>
+            <h2>Already watched</h2>
+
+            <ngx-slick-carousel [config]="sliderConfig" class="carousel">
+              <div
+                class="slick-item"
+                *ngFor="let movie of watchlist.movie_series"
+                ngxSlickItem
+              >
+                <img
+                  [src]="movie.poster"
+                  [alt]="movie.title"
+                  style="width: 200px"
+                />
+              </div>
+            </ngx-slick-carousel>
+
+            <ngx-slick-carousel [config]="sliderConfig" class="carousel">
+              <div
+                class="slick-item"
+                *ngFor="let movie of watchlist.movie_series"
+                ngxSlickItem
+              >
+                <img
+                  [src]="movie.poster"
+                  [alt]="movie.title"
+                  style="width: 200px"
+                />
+              </div>
+            </ngx-slick-carousel>
+
+            <ngx-slick-carousel [config]="sliderConfig" class="carousel">
+              <div
+                class="slick-item"
+                *ngFor="let movie of watchlist.movie_series"
+                ngxSlickItem
+              >
+                <img
+                  [src]="movie.poster"
+                  [alt]="movie.title"
+                  style="width: 200px"
+                />
+              </div>
+            </ngx-slick-carousel>
+          </div>
+        </div>
+      </div>
+      <!-- <app-slider [watchlistObs]="watchlist"></app-slider> -->
+    </ng-container>
+  </div>
+</div>
+
+<!-- /.container -->

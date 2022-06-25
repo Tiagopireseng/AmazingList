@@ -1,7 +1,7 @@
 import { MovieSeries } from './movieseries.model';
 
-export interface Watchlist {
+export interface DetailWatchlist {
   id: number;
   user: number;
-  movie_series: number[];
+  movie_series: MovieSeries[];
 }

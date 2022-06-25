@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 import { MovieSeries } from './models/movieseries.model';
 import { DatashareService } from '../services/datashare.service';
 import { Watchlist } from './models/watchlist.model';
+import { Provider } from './models/provider.model';
 
 @Component({
   selector: 'app-display',
@@ -23,7 +24,8 @@ export class DisplayComponent implements OnInit {
   title = 'AngularMatCrud';
   movieSeriesList: MovieSeries[] = [];
   activeUserID?: number;
-  watchlist?: Watchlist;
+  watchlist!: Watchlist;
+  providersList: Provider[] = [];
 
   constructor(
     public dialog: MatDialog,
@@ -42,12 +44,13 @@ export class DisplayComponent implements OnInit {
     } else {
       this.getUserWatchlist(this.activeUserID);
     }
+    this.listProviders();
   }
 
-  openDialog(): void {
+  openDialog(providersList: Provider[]): void {
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '500px',
-      data: {},
+      data: { providersList: providersList },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -59,7 +62,15 @@ export class DisplayComponent implements OnInit {
   }
 
   goToWatchlist() {
-    this.router.navigate(['/watchlist']);
+    this.watchlist === undefined
+      ? alert('No watchlist found')
+      : this.api.getDetailWL(this.watchlist!.id).subscribe({
+          next: (WL) => {
+            console.log('Detail WL:', WL);
+            this.datashare.changeWL(WL);
+            this.router.navigate(['watchlist']);
+          },
+        });
   }
   getAllMovieSeries() {
     this.api.getMovieSeries().subscribe({
@@ -121,8 +132,7 @@ export class DisplayComponent implements OnInit {
           this.getUserWatchlist(this.activeUserID!);
         },
       });
-    }
-    if (this.watchlist!.movie_series.includes(movieID)) {
+    } else if (this.watchlist!.movie_series.includes(movieID)) {
       alert('Movie already in watchlist');
     } else {
       console.log('Adding to watchlist');
@@ -135,5 +145,14 @@ export class DisplayComponent implements OnInit {
         },
       });
     }
+  }
+
+  listProviders() {
+    this.api.getProviders().subscribe({
+      next: (res) => {
+        console.log('Providers', res);
+        this.providersList = res;
+      },
+    });
   }
 }

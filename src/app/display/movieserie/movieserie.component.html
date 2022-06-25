@@ -4,13 +4,23 @@
     <mat-card-subtitle>{{ movieseries.genre }}</mat-card-subtitle>
   </mat-card-title-group>
   <mat-card-content>
-    {{ movieseries.description }}
+    <img
+      mat-card-image
+      src="{{ movieseries.poster }}"
+      alt="Poster"
+      class="poster"
+    />
   </mat-card-content>
-  <div>
+  <div class="description">
+    <p style="overflow-y: scroll; height: 75px">
+      {{ movieseries.description }}
+    </p>
+  </div>
+  <div style="width: 400px; grid-column-start: 1; grid-column-end: 2">
     <button
       mat-raised-button
       color="primary"
-      (click)="editMS(movieseries)"
+      (click)="editMS(movieseries, providersList)"
       style="margin: 10px"
     >
       <mat-icon>edit</mat-icon>

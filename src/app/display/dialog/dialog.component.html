@@ -11,25 +11,48 @@
     </mat-form-field>
     <br />
     <br />
-    <label style="margin-top: 10px">Componentes da pizza</label>
+    <label style="margin-top: 10px">Movie/Series Components</label>
     <mat-form-field appearance="fill">
       <mat-label>Description</mat-label>
       <textarea
         formControlName="description"
         matInput
-        placeholder="Favor colar URL da imagem"
+        placeholder="Favor escrever sinopse..."
         rows="4"
         cols="50"
       ></textarea>
     </mat-form-field>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Genre</mat-label>
+        <mat-select formControlName="genre">
+          <mat-option *ngFor="let genre of genres" [value]="genre">{{
+            genre
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Providers</mat-label>
+        <mat-select formControlName="providers" multiple>
+          <mat-option
+            *ngFor="let provider of providersList"
+            [value]="provider.id"
+            >{{ provider.name }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
 
     <mat-form-field appearance="fill">
-      <mat-label>Genre</mat-label>
-      <mat-select formControlName="genre">
-        <mat-option *ngFor="let genre of genres" [value]="genre">{{
-          genre
-        }}</mat-option>
-      </mat-select>
+      <mat-label>Poster URL</mat-label>
+      <textarea
+        formControlName="poster"
+        matInput
+        placeholder="Favor colar URL da imagem"
+        rows="4"
+        cols="50"
+      ></textarea>
     </mat-form-field>
 
     <!-- </div> -->

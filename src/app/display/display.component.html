@@ -9,6 +9,7 @@
   <app-movieserie
     *ngFor="let msObj of movieSeriesList; let i = index"
     [movieseries]="msObj"
+    [providersList]="providersList"
     (deleteMSID)="deleteMovieSerie($event)"
     (UpdateMSID)="updateEvent($event)"
     (addMSIDtoWatchlist)="addToWatchlist($event)"
@@ -28,7 +29,11 @@
   >
     Watchlist
   </button>
-  <button mat-raised-button color="secondary" (click)="openDialog()">
+  <button
+    mat-raised-button
+    color="secondary"
+    (click)="openDialog(providersList)"
+  >
     Add Movie/Serie
   </button>
 </div>

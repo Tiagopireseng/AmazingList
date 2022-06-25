@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.views import APIView
 
-from .serializers import MovieSerieSerializer, ProviderSerializer, UserSerializer, RegisterSerializer, WatchlistSerializer
+from .serializers import GetWatchlistSerializer, MovieSerieSerializer, ProviderSerializer, UserSerializer, RegisterSerializer, WatchlistSerializer
 
 from .models import MovieSeries, Provider, Watchlist
 from django.contrib.auth.models import User
@@ -24,6 +24,22 @@ class MovieSerieView(viewsets.ModelViewSet):
 class ProviderView(viewsets.ModelViewSet):
     serializer_class = ProviderSerializer
     queryset = Provider.objects.all()
+
+
+class GetWatchlistView(viewsets.ModelViewSet):
+    serializer_class = GetWatchlistSerializer
+    queryset = Watchlist.objects.all()
+
+    def get_queryset(self):
+        """
+        Optionally restricts the returned purchases to a given user,
+        by filtering against a `username` query parameter in the URL.
+        """
+        queryset = Watchlist.objects.all()
+        user = self.request.query_params.get('user')
+        if user is not None:
+            queryset = queryset.filter(user=user)
+        return queryset
 
 
 class WatchlistView(viewsets.ModelViewSet):

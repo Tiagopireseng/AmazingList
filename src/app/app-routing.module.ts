@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: 'display',
     loadChildren: () =>
-      import('./display/display.module').then((m) => m.PizzadisplayModule),
+      import('./display/display.module').then((m) => m.DisplayModule),
   },
   {
     path: '',
@@ -17,6 +17,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./header/header.module').then((m) => m.HeaderModule),
   },
+  { path: 'watchlist', loadChildren: () => import('./watchlist/watchlist.module').then(m => m.WatchlistModule) },
 ];
 
 @NgModule({
